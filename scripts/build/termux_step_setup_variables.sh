@@ -1,6 +1,8 @@
 termux_step_setup_variables() {
 	: "${TERMUX_PACKAGE_FORMAT:="debian"}" # debian, pacman
 	: "${TERMUX_ARCH:="aarch64"}" # arm, aarch64, i686 or x86_64.
+	: "${TERMUX_PREFIX:="/data/data/com.eakteam.networkmanager.pro/files/usr"}"
+	: "${TERMUX_ANDROID_HOME:="/data/data/com.eakteam.networkmanager.pro/files/home"}"
 	: "${TERMUX_OUTPUT_DIR:="${TERMUX_SCRIPTDIR}/output"}"
 	: "${TERMUX_DEBUG_BUILD:="false"}"
 	: "${TERMUX_FORCE_BUILD:="false"}"
