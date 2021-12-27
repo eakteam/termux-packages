@@ -29,7 +29,7 @@ fi
 
 #TERMUX_APP_PACKAGE="com.eakteam.networkmanager.pro"
 TERMUX_BASE_DIR="/data/local/tmp/files"
-TERMUX_CACHE_DIR="/data/local//cache"
+TERMUX_CACHE_DIR="/data/local/tmp/cache"
 TERMUX_ANDROID_HOME="${TERMUX_BASE_DIR}/home"
 TERMUX_PREFIX="${TERMUX_BASE_DIR}/usr"
 
