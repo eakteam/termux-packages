@@ -21,9 +21,15 @@ else
 fi
 
 # Termux packages configuration.
-TERMUX_APP_PACKAGE="com.eakteam.networkmanager.pro"
-TERMUX_BASE_DIR="/data/data/${TERMUX_APP_PACKAGE}/files"
-TERMUX_CACHE_DIR="/data/data/${TERMUX_APP_PACKAGE}/cache"
+#TERMUX_APP_PACKAGE="com.eakteam.networkmanager.pro"
+#TERMUX_BASE_DIR="/data/data/${TERMUX_APP_PACKAGE}/files"
+#TERMUX_CACHE_DIR="/data/data/${TERMUX_APP_PACKAGE}/cache"
+#TERMUX_ANDROID_HOME="${TERMUX_BASE_DIR}/home"
+#TERMUX_PREFIX="${TERMUX_BASE_DIR}/usr"
+
+#TERMUX_APP_PACKAGE="com.eakteam.networkmanager.pro"
+TERMUX_BASE_DIR="/data/local/tmp/files"
+TERMUX_CACHE_DIR="/data/local//cache"
 TERMUX_ANDROID_HOME="${TERMUX_BASE_DIR}/home"
 TERMUX_PREFIX="${TERMUX_BASE_DIR}/usr"
 
