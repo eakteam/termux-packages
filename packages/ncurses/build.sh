@@ -9,7 +9,7 @@ TERMUX_PKG_VERSION=(6.2.20200725
 		    0.9.0)
 TERMUX_PKG_REVISION=6
 TERMUX_PKG_SRCURL=(https://github.com/termux/distfiles/releases/download/2021.01.04/ncurses-${TERMUX_PKG_VERSION:0:3}-${TERMUX_PKG_VERSION:4}.tgz
-		   https://fossies.org/linux/misc/rxvt-unicode-9.30.tar.bz2
+		   http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.26.tar.bz2
 		   https://github.com/thestinger/termite/archive/v${TERMUX_PKG_VERSION[2]}.tar.gz
 		   https://github.com/kovidgoyal/kitty/archive/v${TERMUX_PKG_VERSION[3]}.tar.gz
 		   https://github.com/alacritty/alacritty/archive/refs/tags/v${TERMUX_PKG_VERSION[4]}.tar.gz)
