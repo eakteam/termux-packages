@@ -3,11 +3,10 @@ TERMUX_PKG_DESCRIPTION="Python 3 programming language intended to enable clear p
 TERMUX_PKG_LICENSE="PythonPL"
 TERMUX_PKG_MAINTAINER="@termux"
 _MAJOR_VERSION=3.10
-TERMUX_PKG_VERSION=${_MAJOR_VERSION}.1
+TERMUX_PKG_VERSION=${_MAJOR_VERSION}.2
 TERMUX_PKG_SRCURL=https://www.python.org/ftp/python/${TERMUX_PKG_VERSION}/Python-${TERMUX_PKG_VERSION}.tar.xz
-TERMUX_PKG_SHA256=a7f1265b6e1a5de1ec5c3ec7019ab53413469934758311e9d240c46e5ae6e177
+TERMUX_PKG_SHA256=17de3ac7da9f2519aa9d64378c603a73a0e9ad58dffa8812e45160c086de64c7
 TERMUX_PKG_DEPENDS="gdbm, libandroid-support, libbz2, libcrypt, libexpat, libffi, liblzma, libsqlite, ncurses, ncurses-ui-libs, openssl, readline, zlib"
-#TERMUX_PKG_DEPENDS="gdbm, libandroid-support, libbz2, libcrypt, libexpat, libffi, liblzma, libsqlite, ncurses, ncurses-ui-libs, openssl, readline, zlib"
 TERMUX_PKG_RECOMMENDS="clang, make, pkg-config"
 TERMUX_PKG_SUGGESTS="python-tkinter"
 TERMUX_PKG_BREAKS="python2 (<= 2.7.15), python-dev"
@@ -88,35 +87,27 @@ termux_step_create_debscripts() {
 	# Post-installation script for setting up pip.
 	cat <<- POSTINST_EOF > ./postinst
 	#!$TERMUX_PREFIX/bin/sh
-
 	echo "Setting up pip..."
-
 	# Fix historical mistake which removed bin/pip but left site-packages/pip-*.dist-info,
 	# which causes ensurepip to avoid installing pip due to already existing pip install:
 	if [ ! -f "$TERMUX_PREFIX/bin/pip" ]; then
 	    rm -Rf ${TERMUX_PREFIX}/lib/python${_MAJOR_VERSION}/site-packages/pip-*.dist-info
 	fi
-
 	${TERMUX_PREFIX}/bin/python3 -m ensurepip --upgrade --default-pip
-
 	exit 0
 	POSTINST_EOF
 
 	# Pre-rm script to cleanup runtime-generated files.
 	cat <<- PRERM_EOF > ./prerm
 	#!$TERMUX_PREFIX/bin/sh
-
 	if [ "$TERMUX_PACKAGE_FORMAT" != "pacman" ] && [ "\$1" != "remove" ]; then
 	    exit 0
 	fi
-
 	echo "Uninstalling python modules..."
 	pip3 freeze 2>/dev/null | xargs pip3 uninstall -y >/dev/null 2>/dev/null
 	rm -f $TERMUX_PREFIX/bin/pip $TERMUX_PREFIX/bin/pip3* $TERMUX_PREFIX/bin/easy_install $TERMUX_PREFIX/bin/easy_install-3*
-
 	echo "Deleting remaining files from site-packages..."
 	rm -Rf $TERMUX_PREFIX/lib/python${_MAJOR_VERSION}/site-packages/*
-
 	exit 0
 	PRERM_EOF
 
